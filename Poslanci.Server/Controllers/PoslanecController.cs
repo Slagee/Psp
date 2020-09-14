@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Contracts;
 using Entities.DataTransferObjects;
+using Entities.RequestFeatures;
+using Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Poslanci.Server.Controllers
 {
@@ -22,11 +24,13 @@ namespace Poslanci.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCurrentPoslanci()
+        public async Task<IActionResult> Get([FromQuery] PoslanciParameters poslanciParameters)
         {
             try
             {
-                var poslanci = await _repo.Poslanec.GetCurrentPoslanci();
+                var poslanci = await _repo.Poslanec.GetCurrentPoslanci(poslanciParameters);
+
+                Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(poslanci.MetaData));
 
                 var poslanciResult = _mapper.Map<IEnumerable<PoslanecDto>>(poslanci);
                 return Ok(poslanciResult);

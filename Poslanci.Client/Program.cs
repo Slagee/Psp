@@ -3,9 +3,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Poslanci.Client.HttpRepository;
+using Poslanci.Server.HttpRepository;
 
-namespace Poslanci.Client
+namespace Poslanci.Server
 {
     public class Program
     {

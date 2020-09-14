@@ -3,7 +3,7 @@ using Entities.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Poslanci.Client.HttpRepository
+namespace Poslanci.Server.HttpRepository
 {
     public interface IPoslanciHttpRepository
     {

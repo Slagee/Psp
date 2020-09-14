@@ -1,5 +1,8 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
+using Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Poslanci.Server.Paging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,15 +16,16 @@ namespace Repository
         {
         }
 
-        public async Task<PagedList<Poslanec>> GetCurrentPoslanci()
+        public async Task<PagedList<Poslanec>> GetCurrentPoslanci(PoslanciParameters poslanciParameters)
         {
-            return await FindAll()
+            var poslanci = await FindAll()
                 .Include(os => os.OsobniData)
                 .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
                 .Include(ka => ka.Kandidatka)
                 .Include(kr => kr.Kraj)
-                .OrderBy(x => x.Kandidatka.Zkratka)
-                .ToListAsync();
+                .OrderBy(x => x.Kandidatka.Zkratka).ToListAsync();
+
+            return PagedList<Poslanec>.ToPagedList(poslanci, poslanciParameters.PageNumber, poslanciParameters.PageSize);
         }
     }
 }

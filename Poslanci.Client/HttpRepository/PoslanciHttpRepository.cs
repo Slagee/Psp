@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Poslanci.Client.HttpRepository
+namespace Poslanci.Server.HttpRepository
 {
     public class PoslanciHttpRepository : IPoslanciHttpRepository
     {

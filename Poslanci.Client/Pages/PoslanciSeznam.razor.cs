@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 using Entities.DataTransferObjects;
-using Poslanci.Client.HttpRepository;
+using Poslanci.Server.HttpRepository;
 
-namespace Poslanci.Client.Pages
+namespace Poslanci.Server.Pages
 {
     public partial class PoslanciSeznam
     {

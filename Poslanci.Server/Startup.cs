@@ -1,6 +1,6 @@
 using AutoMapper;
-using Contracts;
 using Entities.Models;
+using Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +29,8 @@ namespace Poslanci.Server
                 policy.AddPolicy("CorsPolicy", opt => opt
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod());
+                .AllowAnyMethod()
+                .WithExposedHeaders("X-Pagination"));
             });
 
             services.AddDbContext<PoliticsContext>(opt =>
