@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using Contracts;
+using Entities.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Poslanci.Server.Data;
+using Repository;
 
 namespace Poslanci.Server
 {
@@ -26,9 +24,22 @@ namespace Poslanci.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddCors(policy =>
+            {
+                policy.AddPolicy("CorsPolicy", opt => opt
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
+
+            services.AddDbContext<PoliticsContext>(opt =>
+            opt.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
+
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,14 +57,14 @@ namespace Poslanci.Server
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapControllers();
             });
         }
     }
