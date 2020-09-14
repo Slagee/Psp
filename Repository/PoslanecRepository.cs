@@ -21,7 +21,7 @@ namespace Repository
                 .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
                 .Include(ka => ka.Kandidatka)
                 .Include(kr => kr.Kraj)
-                .OrderBy(po => po.OsobniData.Prijmeni)
+                .OrderBy(x => x.Kandidatka.Zkratka)
                 .ToListAsync();
         }
     }
