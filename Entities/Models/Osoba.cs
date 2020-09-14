@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Entities.Models
 {
-    public partial class Osoby
+    public partial class Osoba
     {
-        public Osoby()
+        public Osoba()
         {
             Poslanec = new HashSet<Poslanec>();
         }

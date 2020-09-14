@@ -14,10 +14,13 @@ namespace Repository
         {
         }
 
-        public async Task<IEnumerable<Poslanec>> GetAllPoslanecAsync()
+        public async Task<IEnumerable<Poslanec>> GetCurrentPoslanci()
         {
             return await FindAll()
                 .Include(os => os.OsobniData)
+                .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
+                .Include(ka => ka.Kandidatka)
+                .Include(kr => kr.Kraj)
                 .OrderBy(po => po.OsobniData.Prijmeni)
                 .ToListAsync();
         }

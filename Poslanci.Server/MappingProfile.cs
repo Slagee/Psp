@@ -10,7 +10,9 @@ namespace Poslanci.Server
         {
             CreateMap<Poslanec, PoslanecDto>();
 
-            CreateMap<Osoby, OsobaDto>();
+            CreateMap<Osoba, OsobaDto>();
+
+            CreateMap<Organ, OrganDto>();
         }
     }
 }

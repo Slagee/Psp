@@ -6,6 +6,6 @@ namespace Contracts
 {
     public interface IPoslanecRepository : IRepositoryBase<Poslanec>
     {
-        Task<IEnumerable<Poslanec>> GetAllPoslanecAsync();
+        Task<IEnumerable<Poslanec>> GetCurrentPoslanci();
     }
 }

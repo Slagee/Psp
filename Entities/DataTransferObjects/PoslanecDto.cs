@@ -10,5 +10,8 @@
         public string Facebook { get; set; }
 
         public OsobaDto OsobniData { get; set; }
+        public OrganDto Kandidatka { get; set; }
+        public OrganDto VolebniObdobi { get; set; }
+        public OrganDto Kraj { get; set; }
     }
 }

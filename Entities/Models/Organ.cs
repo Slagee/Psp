@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Entities.Models
 {
-    public partial class Organy
+    public partial class Organ
     {
-        public Organy()
+        public Organ()
         {
             PoslanecIdKandidatkaNavigation = new HashSet<Poslanec>();
             PoslanecIdKrajNavigation = new HashSet<Poslanec>();

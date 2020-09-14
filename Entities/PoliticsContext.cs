@@ -16,8 +16,8 @@ namespace Entities.Models
         }
 
         public virtual DbSet<Funkce> Funkce { get; set; }
-        public virtual DbSet<Organy> Organy { get; set; }
-        public virtual DbSet<Osoby> Osoby { get; set; }
+        public virtual DbSet<Organ> Organ { get; set; }
+        public virtual DbSet<Osoba> Osoba { get; set; }
         public virtual DbSet<Poslanec> Poslanec { get; set; }
         public virtual DbSet<TypFunkce> TypFunkce { get; set; }
         public virtual DbSet<TypOrganu> TypOrganu { get; set; }
@@ -52,12 +52,12 @@ namespace Entities.Models
                     .HasConstraintName("FK_funkce_typ_funkce");
             });
 
-            modelBuilder.Entity<Organy>(entity =>
+            modelBuilder.Entity<Organ>(entity =>
             {
                 entity.HasKey(e => e.IdOrgan)
                     .HasName("PK__organy__062B91726416CF69");
 
-                entity.ToTable("organy");
+                entity.ToTable("organ");
 
                 entity.Property(e => e.IdOrgan)
                     .HasColumnName("id_organ")
@@ -100,11 +100,11 @@ namespace Entities.Models
                     .HasConstraintName("FK_organy_typ_organu");
             });
 
-            modelBuilder.Entity<Osoby>(entity =>
+            modelBuilder.Entity<Osoba>(entity =>
             {
                 entity.HasKey(e => e.IdOsoba);
 
-                entity.ToTable("osoby");
+                entity.ToTable("osoba");
 
                 entity.Property(e => e.IdOsoba)
                     .HasColumnName("id_osoba")
@@ -214,17 +214,17 @@ namespace Entities.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdKandidatkaNavigation)
+                entity.HasOne(d => d.Kandidatka)
                     .WithMany(p => p.PoslanecIdKandidatkaNavigation)
                     .HasForeignKey(d => d.IdKandidatka)
                     .HasConstraintName("FK_poslanec_kandidatka");
 
-                entity.HasOne(d => d.IdKrajNavigation)
+                entity.HasOne(d => d.Kraj)
                     .WithMany(p => p.PoslanecIdKrajNavigation)
                     .HasForeignKey(d => d.IdKraj)
                     .HasConstraintName("FK_poslanec_kraj");
 
-                entity.HasOne(d => d.IdObdobiNavigation)
+                entity.HasOne(d => d.VolebniObdobi)
                     .WithMany(p => p.PoslanecIdObdobiNavigation)
                     .HasForeignKey(d => d.IdObdobi)
                     .HasConstraintName("FK_poslanec_obdobi");
@@ -232,7 +232,7 @@ namespace Entities.Models
                 entity.HasOne(d => d.OsobniData)
                     .WithMany(p => p.Poslanec)
                     .HasForeignKey(d => d.IdOsoba)
-                    .HasConstraintName("FK_poslanec_osoby");
+                    .HasConstraintName("FK_poslanec_osoba");
             });
 
             modelBuilder.Entity<TypFunkce>(entity =>

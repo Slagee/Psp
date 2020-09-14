@@ -22,11 +22,11 @@ namespace Poslanci.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllPoslanec()
+        public async Task<IActionResult> GetCurrentPoslanci()
         {
             try
             {
-                var poslanci = await _repo.Poslanec.GetAllPoslanecAsync();
+                var poslanci = await _repo.Poslanec.GetCurrentPoslanci();
 
                 var poslanciResult = _mapper.Map<IEnumerable<PoslanecDto>>(poslanci);
                 return Ok(poslanciResult);

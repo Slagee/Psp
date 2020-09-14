@@ -7,7 +7,7 @@ namespace Entities.Models
     {
         public TypOrganu()
         {
-            Organy = new HashSet<Organy>();
+            Organy = new HashSet<Organ>();
             TypFunkce = new HashSet<TypFunkce>();
         }
 
@@ -18,7 +18,7 @@ namespace Entities.Models
         public short? TypOrgObecny { get; set; }
         public short? Priorita { get; set; }
 
-        public virtual ICollection<Organy> Organy { get; set; }
+        public virtual ICollection<Organ> Organy { get; set; }
         public virtual ICollection<TypFunkce> TypFunkce { get; set; }
     }
 }

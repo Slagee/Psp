@@ -21,9 +21,9 @@ namespace Entities.Models
         public string Facebook { get; set; }
         public short? Foto { get; set; }
 
-        public virtual Organy IdKandidatkaNavigation { get; set; }
-        public virtual Organy IdKrajNavigation { get; set; }
-        public virtual Organy IdObdobiNavigation { get; set; }
-        public virtual Osoby OsobniData { get; set; }
+        public virtual Organ Kandidatka { get; set; }
+        public virtual Organ Kraj { get; set; }
+        public virtual Organ VolebniObdobi { get; set; }
+        public virtual Osoba OsobniData { get; set; }
     }
 }
