@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Entities.DataTransferObjects;
 using Poslanci.Client.HttpRepository;
 using Entities.RequestFeatures;
+using System;
 
 namespace Poslanci.Client.Pages
 {
@@ -32,6 +33,14 @@ namespace Poslanci.Client.Pages
             var pagingResponse = await PoslanciRepo.GetCurrentPoslanci(_poslanciParameters);
             PoslanciList = pagingResponse.Items;
             MetaData = pagingResponse.MetaData;
+        }
+
+        private async Task SearchChanged(string searchTerm)
+        {
+            Console.WriteLine(searchTerm);
+            _poslanciParameters.PageNumber = 1;
+            _poslanciParameters.SearchTerm = searchTerm;
+            await GetPoslance();
         }
     }
 }

@@ -24,7 +24,8 @@ namespace Poslanci.Client.HttpRepository
         {
             var queryStringParam = new Dictionary<string, string>
             {
-                ["pageNumber"] = poslanciParameters.PageNumber.ToString()
+                ["pageNumber"] = poslanciParameters.PageNumber.ToString(),
+                ["searchTerm"] = poslanciParameters.SearchTerm == null ? "" : poslanciParameters.SearchTerm
             };
 
             var response = await _client.GetAsync(QueryHelpers.AddQueryString("poslanec", queryStringParam));
