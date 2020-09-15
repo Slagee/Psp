@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Poslanci.Server.Pages
+namespace Poslanci.Client.Pages
 {
     public partial class ReportError
     {

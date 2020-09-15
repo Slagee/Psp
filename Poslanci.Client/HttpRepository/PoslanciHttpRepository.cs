@@ -1,11 +1,15 @@
 ﻿using Entities.DataTransferObjects;
-using Entities.Models;
+using Entities.RequestFeatures;
+using Microsoft.AspNetCore.WebUtilities;
+using Poslanci.Client.Features;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Poslanci.Server.HttpRepository
+namespace Poslanci.Client.HttpRepository
 {
     public class PoslanciHttpRepository : IPoslanciHttpRepository
     {
@@ -16,17 +20,34 @@ namespace Poslanci.Server.HttpRepository
             _client = client;
         }
 
-        public async Task<List<PoslanecDto>> GetCurrentPoslanci()
+        public async Task<PagingResponse<PoslanecDto>> GetCurrentPoslanci(PoslanciParameters poslanciParameters)
         {
-            var response = await _client.GetAsync("poslanec");
+            var queryStringParam = new Dictionary<string, string>
+            {
+                ["pageNumber"] = poslanciParameters.PageNumber.ToString()
+            };
+
+            var response = await _client.GetAsync(QueryHelpers.AddQueryString("poslanec", queryStringParam));
             var content = await response.Content.ReadAsStringAsync();
 
-            var poslanci = JsonSerializer.Deserialize<List<PoslanecDto>>(content, new JsonSerializerOptions
+            if (!response.IsSuccessStatusCode)
             {
-                PropertyNameCaseInsensitive = true
-            });
+                throw new ApplicationException(content);
+            }
 
-            return poslanci;
+            var pagingResponse = new PagingResponse<PoslanecDto>
+            {
+                Items = JsonSerializer.Deserialize<List<PoslanecDto>>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }),
+                MetaData = JsonSerializer.Deserialize<MetaData>(response.Headers.GetValues("X-Pagination").First(), new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                })
+            };
+
+            return pagingResponse;
         }
     }
 }

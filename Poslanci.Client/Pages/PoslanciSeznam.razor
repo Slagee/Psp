@@ -1,5 +1,6 @@
 ﻿@page "/poslanciList"
-@using Poslanci.Server.Components.PoslanciTable
+@using Poslanci.Client.Components.PoslanciTable
+@using Poslanci.Client.Components
 
 <div class="row">
     <div class="col-md-10">
@@ -13,6 +14,6 @@
 </div>
 <div class="row">
     <div class="col">
-        @*Place for pagination*@
+        <Pagination MetaData="MetaData" Spread="2" SelectedPage="SelectedPage" />
     </div>
 </div>

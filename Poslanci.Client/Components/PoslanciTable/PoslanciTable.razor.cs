@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Poslanci.Server.Components.PoslanciTable
+namespace Poslanci.Client.Components.PoslanciTable
 {
     public partial class PoslanciTable
     {

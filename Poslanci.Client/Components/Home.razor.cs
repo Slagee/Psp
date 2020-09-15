@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Poslanci.Server.Components
+namespace Poslanci.Client.Components
 {
     public partial class Home
     {
