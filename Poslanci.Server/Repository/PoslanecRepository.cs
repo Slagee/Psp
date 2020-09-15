@@ -3,6 +3,7 @@ using Entities.RequestFeatures;
 using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Poslanci.Server.Paging;
+using Poslanci.Server.Repository.RepositoryExtensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Repository
         public async Task<PagedList<Poslanec>> GetCurrentPoslanci(PoslanciParameters poslanciParameters)
         {
             var poslanci = await FindAll()
+                .Search(poslanciParameters.SearchTerm)
                 .Include(os => os.OsobniData)
                 .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
                 .Include(ka => ka.Kandidatka)
