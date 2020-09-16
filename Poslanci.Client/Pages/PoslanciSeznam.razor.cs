@@ -49,5 +49,12 @@ namespace Poslanci.Client.Pages
             _poslanciParameters.OrderBy = orderBy;
             await GetPoslance();
         }
+
+        private async Task HouseSelection(int house)
+        {            
+            _poslanciParameters.PageNumber = 1;
+            _poslanciParameters.Houses = house;
+            await GetPoslance();
+        }
     }
 }
