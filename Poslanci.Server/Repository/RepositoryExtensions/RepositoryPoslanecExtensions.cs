@@ -22,6 +22,11 @@ namespace Poslanci.Server.Repository.RepositoryExtensions
                 p.Kraj.NazevOrganuCz.ToLower().Contains(lowerCaseSearchTerm));
         }
 
+        public static IQueryable<Poslanec> Houses(this IQueryable<Poslanec> poslanecs, int house)
+        {
+            return poslanecs.Where(x => x.IdObdobi == house);
+        }
+
         public static IQueryable<Poslanec> Sort(this IQueryable<Poslanec> poslanecs, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))

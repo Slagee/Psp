@@ -23,6 +23,7 @@ namespace Entities.RequestFeatures
         }
 
         public string SearchTerm { get; set; }
+        public int Houses { get; set; } = 172;
         public string OrderBy { get; set; } = "kandidatka.zkratka";
     }
 }
