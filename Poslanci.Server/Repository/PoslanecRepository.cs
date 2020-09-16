@@ -22,7 +22,7 @@ namespace Repository
             var poslanci = await FindAll()
                 .Search(poslanciParameters.SearchTerm)
                 .Include(os => os.OsobniData)
-                .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
+                .Include(ob => ob.VolebniObdobi).Where(x => x.IdObdobi == 172)
                 .Include(ka => ka.Kandidatka)
                 .Include(kr => kr.Kraj)
                 .Sort(poslanciParameters.OrderBy)

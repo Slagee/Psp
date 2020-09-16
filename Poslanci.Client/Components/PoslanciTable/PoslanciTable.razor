@@ -3,8 +3,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Jmeno</th>
-                <th scope="col">Prijmeni</th>
+                <th scope="col" class="text-center">Jmeno</th>
+                <th scope="col" class="text-center">Prijmeni</th>
                 <th scope="col">Kandidatka</th>
                 <th scope="col">Detail</th>
             </tr>
@@ -13,11 +13,17 @@
             @foreach (var poslanec in Poslanecs)
             {
                 <tr>
-                    <td class="align-self-auto">
-                        @poslanec.OsobniData.Pred @poslanec.OsobniData.Jmeno
+                    <td class="align-middle">
+                        <div class="row">
+                            <div class="col-3 text-right">@poslanec.OsobniData.Pred</div>
+                            <div class="col-4 text-left">@poslanec.OsobniData.Jmeno</div>
+                        </div>
                     </td>
-                    <td class="align-self-auto">
-                        @poslanec.OsobniData.Prijmeni @poslanec.OsobniData.Za
+                    <td class="align-middle">
+                        <div class="row">
+                            <div class="col-3 text-right">@poslanec.OsobniData.Prijmeni</div>
+                            <div class="col-4 text-left">@poslanec.OsobniData.Za</div>
+                        </div>
                     </td>
                     <td class="align-middle">
                         @poslanec.Kandidatka.Zkratka

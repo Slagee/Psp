@@ -42,5 +42,12 @@ namespace Poslanci.Client.Pages
             _poslanciParameters.SearchTerm = searchTerm;
             await GetPoslance();
         }
+
+        private async Task SortChanged(string orderBy)
+        {
+            Console.WriteLine(orderBy);
+            _poslanciParameters.OrderBy = orderBy;
+            await GetPoslance();
+        }
     }
 }
