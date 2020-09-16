@@ -21,8 +21,9 @@ namespace Repository
         {
             var poslanci = await FindAll()
                 .Search(poslanciParameters.SearchTerm)
+                .Houses(poslanciParameters.Houses)
                 .Include(os => os.OsobniData)
-                .Include(ob => ob.VolebniObdobi).Where(x => x.IdObdobi == 172)
+                .Include(ob => ob.VolebniObdobi)
                 .Include(ka => ka.Kandidatka)
                 .Include(kr => kr.Kraj)
                 .Sort(poslanciParameters.OrderBy)

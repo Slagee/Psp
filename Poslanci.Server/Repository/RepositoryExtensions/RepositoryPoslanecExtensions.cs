@@ -17,7 +17,14 @@ namespace Poslanci.Server.Repository.RepositoryExtensions
 
             var lowerCaseSearchTerm = searchTerm.Trim().ToLower();
 
-            return poslanecs.Where(p => p.OsobniData.Jmeno.ToLower().Contains(lowerCaseSearchTerm) || p.OsobniData.Prijmeni.ToLower().Contains(lowerCaseSearchTerm));
+            return poslanecs.Where(p => p.OsobniData.Jmeno.ToLower().Contains(lowerCaseSearchTerm) ||
+                p.OsobniData.Prijmeni.ToLower().Contains(lowerCaseSearchTerm) || p.Kandidatka.Zkratka.ToLower().Contains(lowerCaseSearchTerm) ||
+                p.Kraj.NazevOrganuCz.ToLower().Contains(lowerCaseSearchTerm));
+        }
+
+        public static IQueryable<Poslanec> Houses(this IQueryable<Poslanec> poslanecs, int house)
+        {
+            return poslanecs.Where(x => x.IdObdobi == house);
         }
 
         public static IQueryable<Poslanec> Sort(this IQueryable<Poslanec> poslanecs, string orderByQueryString)

@@ -26,7 +26,8 @@ namespace Poslanci.Client.HttpRepository
             {
                 ["pageNumber"] = poslanciParameters.PageNumber.ToString(),
                 ["searchTerm"] = poslanciParameters.SearchTerm == null ? "" : poslanciParameters.SearchTerm,
-                ["orderBy"] = poslanciParameters.OrderBy
+                ["orderBy"] = poslanciParameters.OrderBy,
+                ["houses"] = poslanciParameters.Houses.ToString()
             };
 
             var response = await _client.GetAsync(QueryHelpers.AddQueryString("poslanec", queryStringParam));

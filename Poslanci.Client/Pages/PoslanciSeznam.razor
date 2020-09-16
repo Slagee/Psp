@@ -3,11 +3,14 @@
 @using Poslanci.Client.Components
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
         <Search OnSearchChanged="SearchChanged" />
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <Sort OnSortChanged="SortChanged" />
+    </div>
+    <div class="col-md-4">
+        <PreviousHouses OnHouseChanged="HouseSelection" />
     </div>
 </div>
 <div class="row">

@@ -33,6 +33,8 @@ namespace Poslanci.Server.Controllers
                 Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(poslanci.MetaData));
 
                 var poslanciResult = _mapper.Map<IEnumerable<PoslanecDto>>(poslanci);
+
+                
                 return Ok(poslanciResult);
             }
             catch (Exception ex)
