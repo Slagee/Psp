@@ -34,11 +34,14 @@ namespace Poslanci.Server
             });
 
             services.AddDbContext<PoliticsContext>(opt =>
-            opt.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
+                opt.UseSqlServer(Configuration.GetConnectionString("sqlConnection")));
 
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllers();
         }

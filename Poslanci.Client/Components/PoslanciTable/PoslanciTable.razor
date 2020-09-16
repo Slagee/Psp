@@ -3,9 +3,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col" class="text-center">Jmeno</th>
-                <th scope="col" class="text-center">Prijmeni</th>
-                <th scope="col">Kandidatka</th>
+                <th scope="col" class="text-right" style="width: 15%">Jmeno</th>
+                <th scope="col" style="width: 15%">Prijmeni</th>
+                <th scope="col" class="text-center">Kandidatka</th>
+                <th scope="col">Kraj</th>
                 <th scope="col">Detail</th>
             </tr>
         </thead>
@@ -13,20 +14,17 @@
             @foreach (var poslanec in Poslanecs)
             {
                 <tr>
-                    <td class="align-middle">
-                        <div class="row">
-                            <div class="col-3 text-right">@poslanec.OsobniData.Pred</div>
-                            <div class="col-4 text-left">@poslanec.OsobniData.Jmeno</div>
-                        </div>
+                    <td class="align-middle text-right">
+                            @poslanec.OsobniData.Pred @poslanec.OsobniData.Jmeno
                     </td>
-                    <td class="align-middle">
-                        <div class="row">
-                            <div class="col-3 text-right">@poslanec.OsobniData.Prijmeni</div>
-                            <div class="col-4 text-left">@poslanec.OsobniData.Za</div>
-                        </div>
+                    <td class="align-middle text-left">
+                            @poslanec.OsobniData.Prijmeni @poslanec.OsobniData.Za
                     </td>
-                    <td class="align-middle">
+                    <td class="align-middle text-center">
                         @poslanec.Kandidatka.Zkratka
+                    </td>
+                    <td class="align-middle">
+                        @poslanec.Kraj.NazevOrganuCz
                     </td>
                     <td class="align-middle">
                         <button type="button" class="btn btn-info">Detail</button>
