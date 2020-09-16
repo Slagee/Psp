@@ -25,7 +25,8 @@ namespace Repository
                 .Include(ob => ob.VolebniObdobi).Where(x => x.VolebniObdobi.Zkratka == "PSP8")
                 .Include(ka => ka.Kandidatka)
                 .Include(kr => kr.Kraj)
-                .OrderBy(x => x.Kandidatka.Zkratka).ToListAsync();
+                .Sort(poslanciParameters.OrderBy)
+                .ToListAsync();
 
             return PagedList<Poslanec>.ToPagedList(poslanci, poslanciParameters.PageNumber, poslanciParameters.PageSize);
         }
