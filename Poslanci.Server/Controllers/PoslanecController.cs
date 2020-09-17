@@ -42,5 +42,15 @@ namespace Poslanci.Server.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPoslanec(short id)
+        {
+            var poslanec = await _repo.Poslanec.GetPoslanec(id);
+
+            var poslanecResult = _mapper.Map<PoslanecDto>(poslanec);
+
+            return Ok(poslanecResult);
+        }
     }
 }
