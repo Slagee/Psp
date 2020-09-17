@@ -1,7 +1,10 @@
-﻿namespace Entities.DataTransferObjects
+﻿using Entities.Models;
+
+namespace Entities.DataTransferObjects
 {
     public class PoslanecDto
     {
+        public short IdPoslanec { get; set; }
         public string Web { get; set; }
         public string Ulice { get; set; }
         public string Obec { get; set; }

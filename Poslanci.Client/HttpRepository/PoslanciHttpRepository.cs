@@ -52,5 +52,23 @@ namespace Poslanci.Client.HttpRepository
 
             return pagingResponse;
         }
+
+        public async Task<PoslanecDto> GetPoslanec(string id)
+        {
+            var response = await _client.GetAsync("poslanec/" +id);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException(content);
+            }
+
+            var poslanec = JsonSerializer.Deserialize<PoslanecDto>(content, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            return poslanec;
+        }
     }
 }

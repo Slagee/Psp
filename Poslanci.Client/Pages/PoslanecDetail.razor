@@ -1,0 +1,47 @@
+﻿@page "/poslanecDetail/{id}"
+
+<h2>Poslanec Detail</h2>
+
+@if (_poslanec != null)
+{
+<div class="card card-body bg-light mt-5">
+    <div class="row">
+        <div class="col-md-2 font-weight-bold">Titul, jmeno, prijmeni:</div>
+        <div class="col-md-10">@_poslanec.OsobniData.Pred @_poslanec.OsobniData.Jmeno @_poslanec.OsobniData.Prijmeni @_poslanec.OsobniData.Za</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-2 font-weight-bold">Datum narozeni:</div>
+        <div class="col-md-10">@datumNarozeni</div>
+    </div>
+    
+    @if (datumUmrti != null)
+    {
+        <div class="row">
+            <div class="col-md-2 font-weight-bold">Datum umrti:</div>
+            <div class="col-md-10">@datumUmrti</div>
+        </div>
+    }
+
+    @if (_poslanec.Web != "" && _poslanec.Web != "\\ ")
+    {
+        <div class="row">
+            <div class="col-md-2 font-weight-bold">Osobni web:</div>
+            <a class="col-md-10" href="@_poslanec.Web" target="_blank">@_poslanec.Web</a>
+        </div>
+    }
+    @if (_poslanec.Facebook != "" && _poslanec.Facebook != "\\ ")
+    {
+        <div class="row">
+            <div class="col-md-2 font-weight-bold">Osovni facebook:</div>
+            <a class="col-md-10" href="@_poslanec.Facebook" target="_blank">@_poslanec.Web</a>
+        </div>
+    }
+
+
+</div>
+}
+else
+{
+<span>Loading...</span>
+}
