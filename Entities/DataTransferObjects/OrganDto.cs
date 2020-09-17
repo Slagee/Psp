@@ -11,5 +11,7 @@ namespace Entities.DataTransferObjects
         public string NazevOrganuEn { get; set; }
         public DateTime? OdOrgan { get; set; }
         public DateTime? DoOrgan { get; set; }
+        
+        public TypOrganuDto TypOrganu { get; set; }
     }
 }

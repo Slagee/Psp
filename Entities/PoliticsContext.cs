@@ -94,7 +94,7 @@ namespace Entities.Models
                     .HasMaxLength(7)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdTypOrganuNavigation)
+                entity.HasOne(d => d.TypOrganu)
                     .WithMany(p => p.Organy)
                     .HasForeignKey(d => d.IdTypOrganu)
                     .HasConstraintName("FK_organy_typ_organu");
@@ -292,6 +292,50 @@ namespace Entities.Models
                 entity.Property(e => e.TypIdTypOrg).HasColumnName("typ_id_typ_org");
 
                 entity.Property(e => e.TypOrgObecny).HasColumnName("typ_org_obecny");
+            });
+
+            modelBuilder.Entity<Zarazeni>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("zarazeni");
+
+                entity.Property(e => e.ClFunkce).HasColumnName("cl_funkce");
+
+                entity.Property(e => e.DoF)
+                    .HasColumnName("do_f")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.DoO)
+                    .HasColumnName("do_o")
+                    .HasColumnType("datetime2(0)");
+
+                entity.Property(e => e.IdOf).HasColumnName("id_of");
+
+                entity.Property(e => e.IdOsoba).HasColumnName("id_osoba");
+
+                entity.Property(e => e.OdF)
+                    .HasColumnName("od_f")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.OdO)
+                    .HasColumnName("od_o")
+                    .HasColumnType("datetime2(0)");
+
+                entity.HasOne(d => d.IdOfNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdOf)
+                    .HasConstraintName("FK_zarazeni_funkce");
+
+                entity.HasOne(d => d.IdOf1)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdOf)
+                    .HasConstraintName("FK_zarazeni_organ");
+
+                entity.HasOne(d => d.IdOsobaNavigation)
+                    .WithMany()
+                    .HasForeignKey(d => d.IdOsoba)
+                    .HasConstraintName("FK_zarazeni_osoba");
             });
 
             OnModelCreatingPartial(modelBuilder);
