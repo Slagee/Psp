@@ -27,7 +27,7 @@
                         @poslanec.Kraj.NazevOrganuCz
                     </td>
                     <td class="align-middle">
-                        <button type="button" class="btn btn-info">Detail</button>
+                        <button type="button" class="btn btn-info" @onclick="() => RedirectToDetail(poslanec.IdPoslanec)">Detail</button>
                     </td>
                 </tr>
             }

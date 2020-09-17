@@ -33,6 +33,11 @@ namespace Repository
         }
 
         public async Task<Poslanec> GetPoslanec(short id) =>
-            await FindByCondition(p => p.IdPoslanec.Equals(id)).FirstOrDefaultAsync();
+            await FindByCondition(p => p.IdPoslanec.Equals(id))
+                .Include(os => os.OsobniData)
+                .Include(ob => ob.VolebniObdobi)
+                .Include(ka => ka.Kandidatka)
+                .Include(kr => kr.Kraj)
+                .FirstOrDefaultAsync();
     }
 }
