@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Entities.Models
 {
@@ -13,8 +12,8 @@ namespace Entities.Models
         public DateTime? OdF { get; set; }
         public DateTime? DoF { get; set; }
 
-        public virtual Organ IdOf1 { get; set; }
-        public virtual Funkce IdOfNavigation { get; set; }
+        public virtual Organ IdOrgan { get; set; }
+        public virtual Funkce IdFunkce { get; set; }
         public virtual Osoba IdOsobaNavigation { get; set; }
     }
 }

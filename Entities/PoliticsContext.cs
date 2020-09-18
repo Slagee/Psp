@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Entities.Models
 {
@@ -46,7 +44,12 @@ namespace Entities.Models
 
                 entity.Property(e => e.Priorita).HasColumnName("priorita");
 
-                entity.HasOne(d => d.IdTypFunkceNavigation)
+                entity.HasOne(d => d.OrganClenstvi)
+                    .WithMany(p => p.Funkce)
+                    .HasForeignKey(d => d.IdOrgan)
+                    .HasConstraintName("FK_funkce_organ");
+
+                entity.HasOne(d => d.TypFunkce)
                     .WithMany(p => p.Funkce)
                     .HasForeignKey(d => d.IdTypFunkce)
                     .HasConstraintName("FK_funkce_typ_funkce");
@@ -261,7 +264,7 @@ namespace Entities.Models
 
                 entity.Property(e => e.TypFunkceObecny).HasColumnName("typ_funkce_obecny");
 
-                entity.HasOne(d => d.IdTypOrgNavigation)
+                entity.HasOne(d => d.TypOrganu)
                     .WithMany(p => p.TypFunkce)
                     .HasForeignKey(d => d.IdTypOrg)
                     .HasConstraintName("FK_typ_funkce_typ_organu");
@@ -322,12 +325,12 @@ namespace Entities.Models
                     .HasColumnName("od_o")
                     .HasColumnType("datetime2(0)");
 
-                entity.HasOne(d => d.IdOfNavigation)
+                entity.HasOne(d => d.IdFunkce)
                     .WithMany()
                     .HasForeignKey(d => d.IdOf)
                     .HasConstraintName("FK_zarazeni_funkce");
 
-                entity.HasOne(d => d.IdOf1)
+                entity.HasOne(d => d.IdOrgan)
                     .WithMany()
                     .HasForeignKey(d => d.IdOf)
                     .HasConstraintName("FK_zarazeni_organ");

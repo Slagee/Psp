@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Entities.Models
+﻿namespace Entities.Models
 {
     public partial class Funkce
     {
@@ -11,6 +8,7 @@ namespace Entities.Models
         public string NazevFunkceCz { get; set; }
         public short? Priorita { get; set; }
 
-        public virtual TypFunkce IdTypFunkceNavigation { get; set; }
+        public virtual Organ OrganClenstvi { get; set; }
+        public virtual TypFunkce TypFunkce { get; set; }
     }
 }
