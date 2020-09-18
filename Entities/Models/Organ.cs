@@ -7,6 +7,7 @@ namespace Entities.Models
     {
         public Organ()
         {
+            Funkce = new HashSet<Funkce>();
             PoslanecIdKandidatkaNavigation = new HashSet<Poslanec>();
             PoslanecIdKrajNavigation = new HashSet<Poslanec>();
             PoslanecIdObdobiNavigation = new HashSet<Poslanec>();
@@ -23,7 +24,8 @@ namespace Entities.Models
         public short? Priorita { get; set; }
         public short? ClOrganBase { get; set; }
 
-        public virtual TypOrganu IdTypOrganuNavigation { get; set; }
+        public virtual TypOrganu TypOrganu { get; set; }
+        public virtual ICollection<Funkce> Funkce { get; set; }
         public virtual ICollection<Poslanec> PoslanecIdKandidatkaNavigation { get; set; }
         public virtual ICollection<Poslanec> PoslanecIdKrajNavigation { get; set; }
         public virtual ICollection<Poslanec> PoslanecIdObdobiNavigation { get; set; }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Entities.Models
 {
@@ -17,7 +16,7 @@ namespace Entities.Models
         public short? Priorita { get; set; }
         public short? TypFunkceObecny { get; set; }
 
-        public virtual TypOrganu IdTypOrgNavigation { get; set; }
+        public virtual TypOrganu TypOrganu { get; set; }
         public virtual ICollection<Funkce> Funkce { get; set; }
     }
 }

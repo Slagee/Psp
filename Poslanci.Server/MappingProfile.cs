@@ -13,6 +13,14 @@ namespace Poslanci.Server
             CreateMap<Osoba, OsobaDto>();
 
             CreateMap<Organ, OrganDto>();
+
+            CreateMap<TypOrganu, TypOrganuDto>();
+
+            CreateMap<Zarazeni, ZarazeniDto>();
+
+            CreateMap<Funkce, FunkceDto>();
+
+            CreateMap<TypFunkce, TypFunkceDto>();
         }
     }
 }

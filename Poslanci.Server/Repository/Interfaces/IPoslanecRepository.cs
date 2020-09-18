@@ -3,7 +3,7 @@ using Entities.RequestFeatures;
 using Poslanci.Server.Paging;
 using System.Threading.Tasks;
 
-namespace Interfaces
+namespace Poslanci.Server.Repository.Interfaces
 {
     public interface IPoslanecRepository : IRepositoryBase<Poslanec>
     {

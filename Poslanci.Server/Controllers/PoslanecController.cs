@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Entities.DataTransferObjects;
 using Entities.RequestFeatures;
-using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Poslanci.Server.Repository.Interfaces;
 
 namespace Poslanci.Server.Controllers
 {

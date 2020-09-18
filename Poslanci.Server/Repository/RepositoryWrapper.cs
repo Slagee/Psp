@@ -1,13 +1,14 @@
 ﻿using Entities.Models;
-using Interfaces;
+using Poslanci.Server.Repository.Interfaces;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace Poslanci.Server.Repository
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private readonly PoliticsContext _context;
         private IPoslanecRepository _poslanec;
+        private IZarazeniRepository _zarazeni;
 
         public RepositoryWrapper(PoliticsContext politicsContext)
         {
@@ -24,6 +25,19 @@ namespace Repository
                 }
 
                 return _poslanec;
+            }
+        }
+
+        public IZarazeniRepository Zarazeni
+        {
+            get
+            {
+                if (_zarazeni == null)
+                {
+                    _zarazeni = new ZarazeniRepository(_context);
+                }
+
+                return _zarazeni;
             }
         }
 
