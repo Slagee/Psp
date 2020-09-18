@@ -1,14 +1,14 @@
 ﻿using Entities.Models;
 using Entities.RequestFeatures;
-using Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Poslanci.Server.Paging;
+using Poslanci.Server.Repository.Interfaces;
 using Poslanci.Server.Repository.RepositoryExtensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Repository
+namespace Poslanci.Server.Repository
 {
     public class PoslanecRepository : RepositoryBase<Poslanec>, IPoslanecRepository
     {

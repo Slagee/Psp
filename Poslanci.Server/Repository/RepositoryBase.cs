@@ -1,13 +1,13 @@
 ﻿using Entities.Models;
-using Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Poslanci.Server.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Repository
+namespace Poslanci.Server.Repository
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
