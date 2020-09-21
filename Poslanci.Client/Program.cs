@@ -17,6 +17,7 @@ namespace Poslanci.Client
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddScoped<IPoslanciHttpRepository, PoslanciHttpRepository>();
+            builder.Services.AddScoped<IZarazeniHttpRepository, ZarazeniHttpRepository>();
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5011/api/") });
 
             await builder.Build().RunAsync();

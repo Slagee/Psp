@@ -21,7 +21,7 @@ namespace Poslanci.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetFunkce(short id)
+        public async Task<IActionResult> GetZarazeni(short id)
         {
             var funkce = await _repo.Zarazeni.GetFunkce(id);
             var clenstvi = await _repo.Zarazeni.GetClenstvi(id);
@@ -30,6 +30,26 @@ namespace Poslanci.Server.Controllers
             var clenstviResult = _mapper.Map<List<ZarazeniDto>>(clenstvi);
 
             return Ok(new { funkceResult, clenstviResult });
+        }
+
+        [HttpGet("{id}/funkce")]
+        public async Task<IActionResult> GetFunkce(short id)
+        {
+            var funkce = await _repo.Zarazeni.GetFunkce(id);
+
+            var funkceResult = _mapper.Map<List<ZarazeniDto>>(funkce);
+
+            return Ok(funkceResult);
+        }
+
+        [HttpGet("{id}/clenstvi")]
+        public async Task<IActionResult> GetClenstvi(short id)
+        {
+            var clenstvi = await _repo.Zarazeni.GetClenstvi(id);
+
+            var clenstviResult = _mapper.Map<List<ZarazeniDto>>(clenstvi);
+
+            return Ok(clenstviResult);
         }
     }
 }
