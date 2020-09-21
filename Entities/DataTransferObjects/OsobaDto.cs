@@ -4,6 +4,7 @@ namespace Entities.DataTransferObjects
 {
     public class OsobaDto
     {
+        public short IdOsoba { get; set; }
         public string Pred { get; set; }
         public string Jmeno { get; set; }
         public string Prijmeni { get; set; }

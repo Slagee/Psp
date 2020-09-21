@@ -33,11 +33,35 @@
     @if (_poslanec.Facebook != "" && _poslanec.Facebook != "\\ ")
     {
         <div class="row">
-            <div class="col-md-2 font-weight-bold">Osovni facebook:</div>
+            <div class="col-md-2 font-weight-bold">Osobni facebook:</div>
             <a class="col-md-10" href="@_poslanec.Facebook" target="_blank">@_poslanec.Web</a>
         </div>
     }
+    <div class="row">
+        <div class="col-md-2 font-weight-bold">Funkce:</div>
+        @if (Funkce != null)
+        {
+            @foreach (var funkce in Funkce)
+            {
+                @funkce.IdFunkce.NazevFunkceCz
+            }
+        }
+        else
+        {
+            <span>Loading...</span>
+        }
+    </div>
 
+    @if (Clenstvi != null)
+    {
+        <div class="row">
+            <div class="col-md-2 font-weight-bold">Clenem:</div>
+            @foreach (var clenstvi in Clenstvi)
+            {
+                <div class="col-md-10">@clenstvi.IdOrgan.NazevOrganuCz</div>
+            }
+        </div>
+    }
 
 </div>
 }
